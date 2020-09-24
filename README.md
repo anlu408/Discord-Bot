@@ -1,3 +1,1 @@
-#Noot Group Discord Bot :)
-
-no degen twitch references please
+Friend Group Discord bot :)
