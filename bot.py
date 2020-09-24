@@ -8,6 +8,8 @@ client = commands.Bot(command_prefix = '.')
 #When the bot is ready with info from discord it is put into a ready state
 async def on_ready():
     print('Bot is ready.')
-
+@client.event
+async def on_member_join(member):
+    print(f'{member} has joined the server.')
 #In the quotations include your bot token via the Python Dev Portal
-client.run('') 
+client.run('')
