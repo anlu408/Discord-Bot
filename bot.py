@@ -13,5 +13,10 @@ async def on_ready():
 #When a new member joins the server their entrance is announced.
 async def on_member_join(member):
     print(f'{member} has joined the server.')
+
+@client.event
+#When a member leaves or is kicked from the server their exit is announced.
+async def on_member_remove(member):
+    print(f'{member} has left the server')
 #In the quotations include your bot token via the Python Dev Portal
 client.run('')
