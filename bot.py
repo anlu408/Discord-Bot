@@ -17,5 +17,11 @@ async def on_member_join(member):
 #When a member leaves or is kicked from the server their exit is announced.
 async def on_member_remove(member):
     print(f'{member} has left the server')
+
+@client.command()
+#Context is passed automatically. Command prints user's ping in Discord.
+async def ping(ctx):
+    await ctx.send(f' Your ping is {round(client.latency * 1000) ms'})
+
 #In the quotations include your bot token via the Python Dev Portal
 client.run('')
