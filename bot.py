@@ -9,6 +9,7 @@ client = commands.Bot(command_prefix = '.')
 async def on_ready():
     print('Bot is ready.')
 @client.event
+#When a new member joins the server their entrance is announced.
 async def on_member_join(member):
     print(f'{member} has joined the server.')
 #In the quotations include your bot token via the Python Dev Portal
