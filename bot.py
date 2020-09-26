@@ -24,5 +24,20 @@ async def on_member_remove(member):
 async def ping(ctx):
     await ctx.send(f' Your ping is {round(client.latency * 1000) ms'})
 
+@client.command()
+#The command clears the amount of messages specified when used Default = 5.
+async def clear(ctx, amount=5):
+    await ctx.channel.purge(limit=amount)
+
+@client.command()
+#The command kicks a user from the discord channel
+async def kick(ctx, member : discord.Member, *, reason = None):
+    await member.kick(reason = reason)
+
+@client.command()
+#The command bans the user from the discord
+async def ban(ctx, member : discord.Member, *, reason = None):
+    await member.ban(reason = reason )
+
 #In the quotations include your bot token via the Python Dev Portal
 client.run('')
