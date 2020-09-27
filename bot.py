@@ -38,5 +38,18 @@ async def kick(ctx, member : discord.Member, *, reason = None):
 async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason )
 
+@client.command()
+#The command unbans the user from Discord
+async def unban(ctx, *, member): #Use member here is some names contain spaces
+
+#Creates a named tuple containing user object and reason of ban.
+    banned_users = await ctx.guild.bans()
+    member_name, member_discriminator = member.split('#')
+    for ban_entry in banned_users:
+        user = ban_entry.user
+        if(user.name, user.discriminator) == (memmber_name, member_discriminator):
+            await ctx.guild.unban(user)
+            return
+
 #In the quotations include your bot token via the Python Dev Portal
 client.run('')
