@@ -18,9 +18,10 @@ async def on_member_remove(member):
 """
 The lines of code below import any other Python file found in Cogs.
 At the moment it just includes the basic bot.py along with the
-Commands.py that includes the commands available to our bot. 
+Commands.py that includes the commands available to our bot.
 """
 
+#Allows user to load and unload referenced .py files
 @client.command()
 async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')

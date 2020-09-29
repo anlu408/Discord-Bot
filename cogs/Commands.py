@@ -41,8 +41,7 @@ async def unban(ctx, *, member): #Use member here is some names contain spaces
         user = ban_entry.user
         if(user.name, user.discriminator) == (memmber_name, member_discriminator):
             await ctx.guild.unban(user)
-            return
-
+            return=
 
 def setup(client):
     client.add.cog(Example(client))
