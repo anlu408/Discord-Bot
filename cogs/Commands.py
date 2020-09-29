@@ -14,7 +14,7 @@ async def on_ready(self):
 
 @commands.cog.listener()
 #When the bot is ready with info from discord it is put into a ready state
-async def on_ready():
+async def on_ready(self):
     print('Bot is ready.')
 
 @commands.cog.listener()
@@ -30,27 +30,27 @@ async def on_member_remove(member):
 #Commands
 @commands.command()
 #Context is passed automatically. Command prints user's ping in Discord.
-async def ping(ctx):
+async def ping(self,ctx):
     await ctx.send(f' Your ping is {round(client.latency * 1000) ms'})
 
 @commands.command()
 #The command clears the amount of messages specified when used Default = 5.
-async def clear(ctx, amount=5):
+async def clear(self, ctx, amount=5):
     await ctx.channel.purge(limit=amount)
 
 @commands.command()
 #The command kicks a user from the discord channel
-async def kick(ctx, member : discord.Member, *, reason = None):
+async def kick(self, ctx, member : discord.Member, *, reason = None):
     await member.kick(reason = reason)
 
 @commands.command()
 #The command bans the user from the discord
-async def ban(ctx, member : discord.Member, *, reason = None):
+async def ban(self, ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason )
 
 @commands.command()
 #The command unbans the user from Discord
-async def unban(ctx, *, member): #Use member here is some names contain spaces
+async def unban(self, ctx, *, member): #Use member here is some names contain spaces
 #Creates a named tuple containing user object and reason of ban.
     banned_users = await ctx.guild.bans()
     member_name, member_discriminator = member.split('#')
