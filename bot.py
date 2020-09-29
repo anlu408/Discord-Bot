@@ -1,4 +1,5 @@
 import discord
+import os
 from discord.ext import commands
 
 #Sets the commands set in discord chat to start with a . i.e. .help
@@ -41,7 +42,6 @@ async def ban(ctx, member : discord.Member, *, reason = None):
 @client.command()
 #The command unbans the user from Discord
 async def unban(ctx, *, member): #Use member here is some names contain spaces
-
 #Creates a named tuple containing user object and reason of ban.
     banned_users = await ctx.guild.bans()
     member_name, member_discriminator = member.split('#')
@@ -50,6 +50,17 @@ async def unban(ctx, *, member): #Use member here is some names contain spaces
         if(user.name, user.discriminator) == (memmber_name, member_discriminator):
             await ctx.guild.unban(user)
             return
+@client.command()
+async def load(ctx, extension):
+    client.load_extension(f'cogs.{extension}')
+
+@client.command()
+async def unload(ctx, extension):
+    client.load_extension(f'cogs.{extension}')
+
+for filewname in os.listdr('./cogs'):
+    if filename.endswith('.py'):
+        client.load_extension(f'cogs.{filename[:-3]})
 
 #In the quotations include your bot token via the Python Dev Portal
 client.run('')
