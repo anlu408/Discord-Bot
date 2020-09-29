@@ -5,12 +5,29 @@ class Example(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+#Events
 #Function decorator within a Cog
 @commands.cog.listener()
 # Self must be the first argument that every function in the class takes.
 async def on_ready(self):
     print('Bot is Online')
 
+@commands.cog.listener()
+#When the bot is ready with info from discord it is put into a ready state
+async def on_ready():
+    print('Bot is ready.')
+
+@commands.cog.listener()
+#When a new member joins the server their entrance is announced.
+async def on_member_join(member):
+    print(f'{member} has joined the server.')
+
+@commands.cog.listener()
+#When a member leaves or is kicked from the server their exit is announced.
+async def on_member_remove(member):
+    print(f'{member} has left the server')
+
+#Commands
 @commands.command()
 #Context is passed automatically. Command prints user's ping in Discord.
 async def ping(ctx):
