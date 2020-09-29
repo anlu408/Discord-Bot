@@ -20,37 +20,12 @@ async def on_member_join(member):
 async def on_member_remove(member):
     print(f'{member} has left the server')
 
-@client.command()
-#Context is passed automatically. Command prints user's ping in Discord.
-async def ping(ctx):
-    await ctx.send(f' Your ping is {round(client.latency * 1000) ms'})
+"""
+The lines of code below import any other Python file found in Cogs.
+At the moment it just includes the basic bot.py along with the
+Commands.py that includes the commands available to our bot. 
+"""
 
-@client.command()
-#The command clears the amount of messages specified when used Default = 5.
-async def clear(ctx, amount=5):
-    await ctx.channel.purge(limit=amount)
-
-@client.command()
-#The command kicks a user from the discord channel
-async def kick(ctx, member : discord.Member, *, reason = None):
-    await member.kick(reason = reason)
-
-@client.command()
-#The command bans the user from the discord
-async def ban(ctx, member : discord.Member, *, reason = None):
-    await member.ban(reason = reason )
-
-@client.command()
-#The command unbans the user from Discord
-async def unban(ctx, *, member): #Use member here is some names contain spaces
-#Creates a named tuple containing user object and reason of ban.
-    banned_users = await ctx.guild.bans()
-    member_name, member_discriminator = member.split('#')
-    for ban_entry in banned_users:
-        user = ban_entry.user
-        if(user.name, user.discriminator) == (memmber_name, member_discriminator):
-            await ctx.guild.unban(user)
-            return
 @client.command()
 async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')
